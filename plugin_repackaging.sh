@@ -86,7 +86,7 @@ repackage(){
   PACKAGE_NAME_WITH_EXTENSION=`basename ${PACKAGE_PATH}`
   PACKAGE_NAME="${PACKAGE_NAME_WITH_EXTENSION%.*}"
 	echo "Unziping ..."
-	install_unzip
+	# install_unzip
 	unzip -o ${PACKAGE_PATH} -d ${CURR_DIR}/${PACKAGE_NAME}
 	if [[ $? -ne 0 ]]; then
     echo "Unzip failed."
@@ -106,17 +106,17 @@ repackage(){
 	echo "Repackage success."
 }
 
-install_unzip(){
-	rpms=(`rpm -q unzip`)
-	if [ ${#rpms[@]} -ne 1 ]; then
-		echo "Installing unzip ..."
-		yum -y install unzip
-		if [ $? -ne 0 ]; then
-			echo "Install unzip failed."
-			exit 1
-		fi
-	fi
-}
+# install_unzip(){
+# 	rpms=(`rpm -q unzip`)
+# 	if [ ${#rpms[@]} -ne 1 ]; then
+# 		echo "Installing unzip ..."
+# 		yum -y install unzip
+# 		if [ $? -ne 0 ]; then
+# 			echo "Install unzip failed."
+# 			exit 1
+# 		fi
+# 	fi
+# }
 
 case "$1" in
 	'market')
